@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ba606g2xkiqs7"
+path="res://.godot/imported/Quincas Moreira - Robot City (1).mp3-9be5c4ef61909cb36e8b34f9f2692cf1.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Quincas Moreira - Robot City (1).mp3"
+dest_files=["res://.godot/imported/Quincas Moreira - Robot City (1).mp3-9be5c4ef61909cb36e8b34f9f2692cf1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

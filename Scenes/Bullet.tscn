@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgpt6in87igei"]
+
+[ext_resource type="Script" path="res://Scenes/Bullet.gd" id="1_2agao"]
+[ext_resource type="Texture2D" uid="uid://b8fqkk3yietws" path="res://assets/Bullet.aseprite.png" id="1_nd6q4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2tsm1"]
+radius = 2.0
+height = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_psl3g"]
+radius = 2.0
+height = 8.0
+
+[node name="Bullet" type="Area2D" groups=["bullet"]]
+script = ExtResource("1_2agao")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_nd6q4")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4095
+collision_mask = 4095
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2tsm1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_psl3g")
+
+[connection signal="body_shape_entered" from="Hurtbox" to="." method="_on_hurtbox_body_shape_entered"]
