@@ -11,6 +11,7 @@ var cooldown_timer: bool = true
 @onready var oof = $AudioStreamPlayer2D
 @onready var animator = $Area2D/AnimatedSprite2D
 @onready var death = $death
+var not_dead = true
 var dead = false
 var can_see = false
 @onready var detection_area = $Area2D/DetectionArea
@@ -21,28 +22,29 @@ func hit():
 
 func _physics_process(delta):
 	
-	if can_see:
-		
-		velocity = Vector2.ZERO
+	if dead:
+		return
 	else:
-	
-		var direction_to_player = global_position.direction_to(player.global_position)
-		velocity = direction_to_player * SPEED
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	if can_see and cooldown_timer:
-		shoot()
-	else:
-		pass
-		if dead == true:
-			pass
+		if can_see:
+			velocity = Vector2.ZERO
 		else:
-			look_at(player.global_position)
-		move_and_slide()
+			var direction_to_player = global_position.direction_to(player.global_position)
+			velocity = direction_to_player * SPEED
+		if can_see and cooldown_timer and not_dead:
+			shoot()
+		else:
+			pass
+			if dead == true:
+				pass
+			else:
+				look_at(player.global_position)
+			move_and_slide()
+		if enemy_health == 0:
+			_die()
 
 func shoot():
 	var bullet = Bullet.instantiate()
-	print("hi")
+	#print("hi")
 	add_sibling(bullet)
 	$Shoot_Timer.start()
 	cooldown_timer = false
@@ -61,21 +63,17 @@ func _process(delta):
 		enemy_health -= 1
 		is_ready = false
 		oof.play()
-		
-	if enemy_health == 0:
-		dead = true
-		animator.play("dead")
-		death.play()
-		SPEED = 0
-		await animator.animation_finished
-		queue_free()
-		#speed = 0
-	else:
-		pass
-	
 
-	
-	
+
+func _die():
+	dead = true
+	not_dead = false
+	SPEED = 0
+	animator.play("dead")
+	death.play()
+	await animator.animation_finished
+	queue_free()
+	#speed = 0
 
 
 
@@ -87,7 +85,6 @@ func _on_area_2d_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	mouse_over = false
-
 
 
 

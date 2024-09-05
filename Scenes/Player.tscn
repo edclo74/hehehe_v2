@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dis4ybo7yihh8"]
+[gd_scene load_steps=71 format=3 uid="uid://dis4ybo7yihh8"]
 
 [ext_resource type="Texture2D" uid="uid://dbcv1eukfp54o" path="res://assets/Sprite-Idle.aseprite.png" id="1_2vu8y"]
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="1_4wrrv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cqfi8n803egtv" path="res://assets/Player-Icon-Bad-HealthV2.aseprite.png" id="7_lvi8q"]
 [ext_resource type="Texture2D" uid="uid://dwynu7iva2xgo" path="res://assets/Player-Icon-Good-Health.aseprite.png" id="8_7pjt4"]
 [ext_resource type="Texture2D" uid="uid://b2t4gij471afo" path="res://assets/Player-Icon-Medium-Health.aseprite.png" id="9_ik64c"]
+[ext_resource type="AudioStream" uid="uid://3l42v1uww8in" path="res://Scenes/audiomass-output (2).mp3" id="10_dbexs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0jg7"]
 radius = 12.0
@@ -495,8 +496,8 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 4095
-collision_mask = 4095
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_4wrrv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -525,7 +526,7 @@ stream = ExtResource("6_ube3h")
 bus = &"SFX"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(2.6, 2.6)
 
 [node name="CameraShake" type="AnimationPlayer" parent="."]
 libraries = {
@@ -549,5 +550,10 @@ target_position = Vector2(0, -1000)
 collision_mask = 2147483648
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="Poewaew" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-170, 88)
+stream = ExtResource("10_dbexs")
+autoplay = true
 
 [connection signal="timeout" from="Shoot_Timer" to="." method="_on_shoot_timer_timeout"]

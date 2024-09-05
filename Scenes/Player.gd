@@ -1,11 +1,12 @@
 extends CharacterBody2D
 var is_ready: bool = true
-@export var SPEED = 100.0
+@export var SPEED = 50
 @export var Bullet: PackedScene
 @onready var player = $"."
 @export var ACCELERATION = 300.0
 @export var FRICTION = 300.0
 #@onready var Sprite = $AnimatedSprite2D
+@onready var background_music = $"../Background"
 @onready var world = get_tree().get_first_node_in_group("root")
 @onready var cooldown_timer = $Shoot_Timer
 @onready var Sprite = $AnimationTree.get("parameters/playback")
@@ -21,18 +22,23 @@ var is_ready: bool = true
 var direction = Vector2.ZERO
 @onready var CameraShake = $CameraShake
 var reload = 4
+var health = 4
 @onready var ray_cast_2d = $RayCast2D
 func _ready():
 	$AnimationTree.active = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	background_music.play()
 
 func _physics_process(delta):
+		if health == 0:
+			get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
 		var mouse_pos = get_global_mouse_position()
 		var shoot = Input.is_action_pressed("shoot") 
 		var run = Input.is_action_pressed("run")
 		#Movement
 		direction = Input.get_vector("left", "right", "up", "down").normalized()
 		if direction and run:
-			velocity = velocity.move_toward(direction * SPEED * 2, ACCELERATION)
+			velocity = velocity.move_toward(direction * SPEED * 3, ACCELERATION)
 			Sprite.travel("Running") 
 		elif direction:
 			velocity = velocity.move_toward(direction * SPEED, ACCELERATION)
@@ -73,6 +79,9 @@ func _physics_process(delta):
 			
 		crosshair.position = mouse_pos
 
+
+
+
 func _on_shoot_timer_timeout():
 	is_ready = true
 
@@ -85,26 +94,14 @@ func fireball():
 
 
 func _process(delta):
+	#print(health)
 	look_at(get_global_mouse_position())
 
 	rotation_degrees += 90
-	
-	
-	
-	
-	
 	move_and_slide()
+	if health <=0 :
+		get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
 	
-
-
-
-
-
-
-
-
-
-
 
 
 func _on_main_room_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):

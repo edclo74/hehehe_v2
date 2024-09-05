@@ -5,9 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akqqi"]
 size = Vector2(32, 32)
 
-[node name="Node2D" type="StaticBody2D"]
-collision_layer = 262
-collision_mask = 256
+[node name="Node2D" type="StaticBody2D" groups=["box"]]
+collision_layer = 257
+collision_mask = 257
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_akqqi")

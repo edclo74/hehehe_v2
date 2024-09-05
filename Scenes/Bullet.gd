@@ -8,11 +8,15 @@ var bullet_damage = 1
 func _ready():
 	pass
 
-
+func _process(delta):
+	print("My health is on",health)
+	if health < 1:
+		print ("dead")
+		get_tree().quit()
+	else:
+		pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float):
-	if health == 0:
-		get_tree().quit()                          
 	if direction != Vector2.ZERO:
 		var velocity = direction * SPEED
 		global_position += velocity
@@ -20,14 +24,12 @@ func _physics_process(delta: float):
 func set_direction(direction: Vector2):
 	self.direction = direction
 
-func _on_body_entered(body):
-	if body.is_in_group("Player"):
-		print("tehehe")
-		body.take_damage(bullet_damage)
-		queue_free()
-
 func damage_player(amount):
-	health -= amount
+
+	if health<1:
+		pass
+	else:
+		health-= amount
 	
 
 
@@ -39,8 +41,12 @@ func check_collsions():
 			if collision.is_in_group("Player"):
 				damage_player(bullet_damage)
 
-
-func _on_hurtbox_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_hurtbox_body_entered(body):
+	if body.is_in_group("box"):
+		print("hi")
+		queue_free()
 	if body.is_in_group("Player"):
-		pass
-		#print("hiewewew")
+		#print("tehehe")
+		#body.take_damage(bullet_damage)
+		body.health -= 1
+		queue_free()
