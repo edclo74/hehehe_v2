@@ -528,6 +528,10 @@ bus = &"SFX"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.6, 2.6)
 
+[node name="Enemy spawner" type="Node2D" parent="Camera2D"]
+
+[node name="EnemySpawn" type="Node2D" parent="Camera2D/Enemy spawner"]
+
 [node name="CameraShake" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_6e3br")

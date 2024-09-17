@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cg6gnsacbdj5s"]
+[gd_scene load_steps=8 format=3 uid="uid://cg6gnsacbdj5s"]
 
 [ext_resource type="TileSet" uid="uid://crdmh70ujp2yv" path="res://TileMap.tres" id="1_dmbvt"]
 [ext_resource type="PackedScene" uid="uid://dis4ybo7yihh8" path="res://Scenes/Player.tscn" id="2_giy0s"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://7pwe60a0qt6u" path="res://Scenes/enemy.tscn" id="4_01p27"]
 [ext_resource type="PackedScene" uid="uid://2dgnpt0d23dm" path="res://Scenes/node_2d.tscn" id="5_ww7cs"]
 [ext_resource type="AudioStream" uid="uid://3l42v1uww8in" path="res://Scenes/audiomass-output (2).mp3" id="6_6y4j1"]
+[ext_resource type="Script" path="res://Scenes/Enemy Spawners.gd" id="7_w3pqd"]
 
 [node name="endless_game" type="Node2D" groups=["root"]]
 
@@ -106,3 +107,47 @@ texture = ExtResource("3_oorcb")
 stream = ExtResource("6_6y4j1")
 autoplay = true
 bus = &"Music"
+
+[node name="Enemy Spawners" type="Node2D" parent="."]
+script = ExtResource("7_w3pqd")
+
+[node name="Spawnpoints" type="Node2D" parent="Enemy Spawners"]
+
+[node name="Marker2D" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(3174, 275)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(2017, 602)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(46, 1030)
+
+[node name="Marker2D4" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(56, 402)
+
+[node name="Marker2D5" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(3175, 997)
+
+[node name="Timer" type="Timer" parent="Enemy Spawners/Spawnpoints"]
+wait_time = 7.0
+autostart = true
+
+[node name="Marker2D6" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(1635, 1346)
+
+[node name="Marker2D7" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(2067, 201)
+
+[node name="Marker2D8" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(1479, 177)
+
+[node name="Marker2D9" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(1045, 1199)
+
+[node name="Marker2D10" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(2384, 1331)
+
+[node name="Marker2D11" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]
+position = Vector2(742, 345)
+
+[connection signal="timeout" from="Enemy Spawners/Spawnpoints/Timer" to="Enemy Spawners" method="_on_timer_timeout"]

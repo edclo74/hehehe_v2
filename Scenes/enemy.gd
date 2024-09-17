@@ -3,7 +3,7 @@ extends CharacterBody2D
 const bullet = preload("res://Scenes/Bullet.tscn")
 @export var SPEED = 100
 var is_ready: bool = true
-@onready var enemy_health = 3
+@onready var enemy_health = 2
 @onready var hands = $Marker2D
 var mouse_over = false
 @onready var Bullet = preload("res://Scenes/Bullet.tscn")
