@@ -9,7 +9,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	print("My health is on",health)
+	#print("My health is on",health)
 	if health < 1:
 		print ("dead")
 		get_tree().quit()

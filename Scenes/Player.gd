@@ -30,6 +30,7 @@ func _ready():
 	background_music.play()
 
 func _physics_process(delta):
+		print(Points.Points)
 		if health == 0:
 			get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
 		var mouse_pos = get_global_mouse_position()
@@ -64,7 +65,7 @@ func _physics_process(delta):
 			var collider = ray_cast_2d.get_collider()
 			if collider:
 				if collider.is_in_group("Enemy"):
-					print("Hit the bastard") 
+					#print("Hit the bastard") 
 					if not collider.dead:
 						collider.hit()
 		else:
@@ -72,7 +73,8 @@ func _physics_process(delta):
 		
 		
 		if reload == 0:
-			print()
+			pass
+			#print()
 			
 		else:
 			pass

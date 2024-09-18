@@ -37,12 +37,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_reros")
 
-[node name="Gun" type="AnimatedSprite2D" parent="."]
-position = Vector2(1331.81, 910.12)
-scale = Vector2(1.28825, 1.23724)
-sprite_frames = SubResource("SpriteFrames_ef1fp")
-offset = Vector2(24, 15)
-
 [node name="Main Menu" type="Button" parent="."]
 layout_mode = 0
 offset_left = 806.0
@@ -51,5 +45,18 @@ offset_right = 1112.0
 offset_bottom = 857.0
 text = "Main Menu
 "
+
+[node name="Gun" type="AnimatedSprite2D" parent="."]
+position = Vector2(1331.81, 910.12)
+scale = Vector2(1.28825, 1.23724)
+sprite_frames = SubResource("SpriteFrames_ef1fp")
+offset = Vector2(24, 15)
+
+[node name="Death_screen_Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 186.0
+offset_right = 2003.0
+offset_bottom = 566.0
 
 [connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]

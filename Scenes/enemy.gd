@@ -66,6 +66,7 @@ func _process(delta):
 
 
 func _die():
+	Points.Points += 100
 	dead = true
 	not_dead = false
 	SPEED = 0
