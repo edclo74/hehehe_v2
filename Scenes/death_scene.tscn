@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://beykr5ai7htig"]
+[gd_scene load_steps=9 format=3 uid="uid://beykr5ai7htig"]
 
 [ext_resource type="Script" path="res://Scenes/death_scene.gd" id="1_reros"]
 [ext_resource type="Texture2D" uid="uid://bb20u68d4kiya" path="res://assets/Gun_MainMenu.aseprite.png" id="2_7ylu3"]
+[ext_resource type="Texture2D" uid="uid://bicwr26tdj6c" path="res://assets/judwajdewalk;jdwalkdfwaoidwaoiudwaojdwaoidwaoidwaoidwaiodwaoidwaiodwaoidwaoidwaoidfwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaiodwaejfdsodsokfjdsaof hsdlkfq jvbnqn z c.aseprite.png" id="2_ttarg"]
+[ext_resource type="AudioStream" uid="uid://mpx02b0yiey3" path="res://audiomass-output (3).mp3" id="3_5uw0c"]
+[ext_resource type="Texture2D" uid="uid://cyxy0yir81xyr" path="res://assets/Sprite-0002.aseprite.png" id="5_8hrfu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_koamd"]
 atlas = ExtResource("2_7ylu3")
@@ -37,6 +40,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_reros")
 
+[node name="Judwajdewalk;jdwalkdfwaoidwaoiudwaojdwaoidwaoidwaoidwaiodwaoidwaiodwaoidwaoidwaoidfwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaiodwaejfdsodsokfjdsaofHsdlkfqJvbnqnZC_aseprite" type="Sprite2D" parent="."]
+position = Vector2(967, 544)
+scale = Vector2(1.07083, 1.13241)
+texture = ExtResource("2_ttarg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(973, 258)
+scale = Vector2(6.91797, 11.6406)
+texture = ExtResource("5_8hrfu")
+
 [node name="Main Menu" type="Button" parent="."]
 layout_mode = 0
 offset_left = 806.0
@@ -52,11 +65,23 @@ scale = Vector2(1.28825, 1.23724)
 sprite_frames = SubResource("SpriteFrames_ef1fp")
 offset = Vector2(24, 15)
 
+[node name="Musikness" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5uw0c")
+autoplay = true
+
 [node name="Death_screen_Score" type="Label" parent="."]
 layout_mode = 0
-offset_left = 704.0
-offset_top = 186.0
-offset_right = 2003.0
-offset_bottom = 566.0
+offset_left = 831.0
+offset_top = 521.0
+offset_right = 2130.0
+offset_bottom = 901.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 325.0
+offset_right = 405.0
+offset_bottom = 488.0
+text = "Highscore is 54000"
 
 [connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]

@@ -111,16 +111,25 @@ offset_bottom = 880.0
 text = "Quit
 "
 
+[node name="Musik" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_wv5yg")
+autoplay = true
+bus = &"Music"
+
 [node name="Gun" type="AnimatedSprite2D" parent="."]
 position = Vector2(525.808, 218.12)
 scale = Vector2(1.28825, 1.23724)
 sprite_frames = SubResource("SpriteFrames_tnne0")
 offset = Vector2(24, 15)
 
-[node name="Musik" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_wv5yg")
-autoplay = true
-bus = &"Music"
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1552.89
+offset_top = 969.0
+offset_right = 1704.89
+offset_bottom = 992.0
+scale = Vector2(1.76292, 2.80902)
+text = "Hold shift for sprint"
 
 [connection signal="pressed" from="Play_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Options_Button" to="." method="_on_options_button_pressed"]
