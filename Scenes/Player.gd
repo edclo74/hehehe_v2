@@ -12,6 +12,7 @@ var is_ready: bool = true
 @onready var Sprite = $AnimationTree.get("parameters/playback")
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var GunShot = $GunShot
+@onready var point_text = $point_text
 #@onready var hehe = $"../Main Room/hehe"
 #@onready var hehe2 = $"../Other_Room/hehe2"
 #@onready var hehe3 = $"../Other_Room2/hehe3"
@@ -30,6 +31,7 @@ func _ready():
 	background_music.play()
 
 func _physics_process(delta):
+		#point_text.text = "Health:" + str(Health.Health)
 		print(Points.Points)
 		if health == 0:
 			get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")

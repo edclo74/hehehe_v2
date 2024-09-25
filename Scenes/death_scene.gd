@@ -6,7 +6,7 @@ func _physics_process(delta):
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	gun.position = get_global_mouse_position()
 	gun.rotation_degrees = 45
-	Score.text = "Your Score Is " + str(Points.Points)
+	Score.text = "Your Score Is" + str(Points.Points)
 
 
 

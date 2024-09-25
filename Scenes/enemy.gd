@@ -7,6 +7,7 @@ var is_ready: bool = true
 @onready var hands = $Marker2D
 var mouse_over = false
 @onready var Bullet = preload("res://Scenes/Bullet.tscn")
+@onready var point_text = $point_text
 var cooldown_timer: bool = true
 @onready var oof = $AudioStreamPlayer2D
 @onready var animator = $Area2D/AnimatedSprite2D
@@ -66,6 +67,8 @@ func _process(delta):
 
 
 func _die():
+	point_text.show()
+	point_text.play("default")
 	Points.Points += 100
 	dead = true
 	not_dead = false

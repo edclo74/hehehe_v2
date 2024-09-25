@@ -129,7 +129,7 @@ position = Vector2(56, 402)
 position = Vector2(3175, 997)
 
 [node name="Timer" type="Timer" parent="Enemy Spawners/Spawnpoints"]
-wait_time = 4.0
+wait_time = 3.2
 autostart = true
 
 [node name="Marker2D6" type="Marker2D" parent="Enemy Spawners/Spawnpoints"]

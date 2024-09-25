@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/death_scene.gd" id="1_reros"]
 [ext_resource type="Texture2D" uid="uid://bb20u68d4kiya" path="res://assets/Gun_MainMenu.aseprite.png" id="2_7ylu3"]
-[ext_resource type="Texture2D" uid="uid://bicwr26tdj6c" path="res://assets/judwajdewalk;jdwalkdfwaoidwaoiudwaojdwaoidwaoidwaoidwaiodwaoidwaiodwaoidwaoidwaoidfwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaiodwaejfdsodsokfjdsaof hsdlkfq jvbnqn z c.aseprite.png" id="2_ttarg"]
+[ext_resource type="Texture2D" uid="uid://dnoifks1kxs4j" path="res://assets/helpwewe.png" id="2_j5wk8"]
 [ext_resource type="AudioStream" uid="uid://mpx02b0yiey3" path="res://audiomass-output (3).mp3" id="3_5uw0c"]
 [ext_resource type="Texture2D" uid="uid://cyxy0yir81xyr" path="res://assets/Sprite-0002.aseprite.png" id="5_8hrfu"]
 
@@ -40,10 +40,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_reros")
 
+[node name="Helpwewe" type="Sprite2D" parent="."]
+position = Vector2(964, 529)
+texture = ExtResource("2_j5wk8")
+
 [node name="Judwajdewalk;jdwalkdfwaoidwaoiudwaojdwaoidwaoidwaoidwaiodwaoidwaiodwaoidwaoidwaoidfwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaoidwaiodwaejfdsodsokfjdsaofHsdlkfqJvbnqnZC_aseprite" type="Sprite2D" parent="."]
 position = Vector2(967, 544)
 scale = Vector2(1.07083, 1.13241)
-texture = ExtResource("2_ttarg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(973, 258)
@@ -59,15 +62,11 @@ offset_bottom = 857.0
 text = "Main Menu
 "
 
-[node name="Gun" type="AnimatedSprite2D" parent="."]
-position = Vector2(1331.81, 910.12)
-scale = Vector2(1.28825, 1.23724)
-sprite_frames = SubResource("SpriteFrames_ef1fp")
-offset = Vector2(24, 15)
-
 [node name="Musikness" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_5uw0c")
+volume_db = 12.0
 autoplay = true
+bus = &"Music"
 
 [node name="Death_screen_Score" type="Label" parent="."]
 layout_mode = 0
@@ -83,5 +82,11 @@ offset_top = 325.0
 offset_right = 405.0
 offset_bottom = 488.0
 text = "Highscore is 54000"
+
+[node name="Gun" type="AnimatedSprite2D" parent="."]
+position = Vector2(1331.81, 910.12)
+scale = Vector2(1.28825, 1.23724)
+sprite_frames = SubResource("SpriteFrames_ef1fp")
+offset = Vector2(24, 15)
 
 [connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]
